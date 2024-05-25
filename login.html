@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+   <!-- login page -->
+
+   <div id="mainpage">
+    <div id="boxlogin">
+        <div id="logincenter">
+            <h1>Login</h1>
+            <input type="text" id="loginPhoneNumber" placeholder="Enter Phone Number"> <br> <br>
+            <input type="text" id="loginPassword" placeholder="Enter password"> <br> <br>
+            <button type="button" onclick="oncreateSubmit()">Submit</button>
+            <button>clear</button> <br>
+            <a onclick="signuppage()">create an account..?</a>
+        </div>
+       </div>
+   </div>
+
+<!-- signup page -->
+
+<div id="signupMainpage" style="display: flex; position: relative;left: 500px; justify-content: center; align-items: center; margin-top: 230px;display: none;">
+    <div>
+     <h1>Signup</h1>
+        <form action="" id="formsignup">
+            <input type="text" id="signupNameId" placeholder="Enter name"> <br><br>
+            <input type="number" id="signupPhonenumber" placeholder="Enter Phone number"><br><br>
+            <input type="text" id="signupPassword" placeholder="Enter Password"><br><br>
+    
+            <button type="button" onclick="SignupCreate()">Create</button>
+            <button type="button" onclick="closeSignup()">close</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var signupArray= new Array();
+
+    function signuppage(){
+        document.getElementById('mainpage').style.display="none"
+        document.getElementById('signupMainpage').style.display="block"
+    }
+
+    function closeSignup(){
+        document.getElementById('mainpage').style.display="block"
+        document.getElementById('signupMainpage').style.display="none"
+    }
+
+    function SignupCreate(){
+        
+
+        signuparray=JSON.parse(localStorage.getItem("SignupData"))?JSON.parse(localStorage.getItem("SignupData")):[];
+
+        var usersignupName=document.getElementById('signupNameId').value
+        
+        
+        var usersignupNumber=document.getElementById('signupPhonenumber').value
+        
+
+        var usersignupPassword=document.getElementById('signupPassword').value
+   
+
+        signupArray.push({
+            "name":usersignupName,
+            "phone":usersignupNumber,
+            "password":usersignupPassword
+        })
+
+       
+
+        localStorage.setItem("SignupData",JSON.stringify(signupArray))
+       alert("Account created Successfully")
+       document.getElementById('formsignup').reset();
+       document.getElementById('mainpage').style.display="block"
+        document.getElementById('signupMainpage').style.display="none"
+
+
+    }
+
+    function oncreateSubmit(){
+        debugger
+       
+
+        var userloginPassword = document.getElementById('loginPassword').value;
+        var userloginPhone = document.getElementById('loginPhoneNumber').value;
+
+        var loginArray = JSON.parse(localStorage.getItem("SignupData")) || [];
+
+        var user = loginArray.find((val) => val.phone == userloginPhone && val.password == userloginPassword);
+
+        if (user) {
+         localStorage.setItem("userpassword", user.password);
+         localStorage.setItem("userphonenumber", user.phone);
+         localStorage.setItem("username", user.name);
+
+    alert(`Welcome ${user.name}`);
+} else {
+    alert("Invalid phone number or password");
+}
+
+
+        
+
+    
+}
+</script>
+</body>
+</html>

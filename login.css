@@ -1,0 +1,42 @@
+#logincenter{
+   position: relative;
+   left: 140px;
+    margin-bottom: 20px;
+    
+}
+#boxlogin{
+    border: 0.5px solid black;
+    width: 45%;
+    height: 70%;
+    position: relative;
+    left: 30%;
+    margin-top: 15%;
+    
+}
+input{
+    width: 300px;
+    height: 25px;
+    border-radius: 8px;
+    border: 1px solid black;
+    text-align: center;
+}
+button{
+    width: 150px;
+    border-radius: 8px;
+    border: 1px solid black;
+    height: 25px;
+}
+a{
+    position: relative;
+    left: 180px;
+    top: 10px;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    
+}
+h1{
+    position: relative;
+    left: 90px;
+}
